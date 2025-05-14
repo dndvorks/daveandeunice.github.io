@@ -1,0 +1,479 @@
+/* Basic Styling */
+
+/* @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Shadows+Into+Light&family=Space+Grotesk:wght@300..700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Shadows+Into+Light&family=Space+Grotesk:wght@300..700&display=swap');
+
+
+@font-face {
+  font-family: 'Brittany Signature';
+  src: url('../assets/fonts/BrittanySignature.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    /* font-family: Arial, sans-serif; */
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+  }
+  
+  body {
+    font-family: "Shadows Into Light", cursive;
+    font-weight: 400;
+    font-style: normal;
+    overflow-x: hidden;
+  }
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+
+.preload-row {
+  width: 100%;
+  height: 33.333%;
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.row-top {
+  top: 0;
+  background-color: #4B667C;
+}
+
+.row-middle {
+  top: 33.333%;
+  background-color: #4B667C;
+}
+
+.row-bottom {
+  top: 66.666%;
+  background-color: #4B667C;
+}
+
+#typewriter-text {
+  font-family: monospace;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  color:#fff;
+  border-right: 2px solid #fff;
+}
+
+#typewriter-text::after {
+  content: '|';
+  animation: blink 0.8s infinite;
+}
+.h3.no-sx {
+    background-color: transparent;
+    top: -100px;
+    font-size: 48px;
+    color: #ffff;
+    font-weight: 300 !important;
+    margin: 0 auto;
+    width: 100%;
+    letter-spacing: 10px;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+  h1, h2, h3, h4, h5, h6{
+    font-family: 'Brittany Signature', sans-serif;  
+  }
+  
+  h1 span{
+    font-family: 'Brittany Signature', sans-serif;  
+    /* font-family: "Space Grotesk", sans-serif; */
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+  }
+  body, .static-bg {
+    background-color: #fbfbfb;
+}
+canvas {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2; /* Behind everything */
+}
+  
+  #v0 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    max-height: 100%;
+    object-fit: cover; /* Ensures the video covers the screen without distortion */
+    pointer-events: none; /* Prevents interaction with the video while scrolling */
+  }
+  
+  /* Responsive typography */
+  p {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    line-height: 1.5;
+    margin: 1rem;
+  }
+  
+
+  .container {
+    width: 100%;
+    max-width: 1560px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+ h1, h2, h3, h4, h5, h6{
+    font-family: 'Brittany Signature', sans-serif;  
+  }
+  .title {
+    margin: 0;
+    font-size: 8rem;
+    line-height: 6rem;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 800;
+    color: #ffffff;
+}
+.title span {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 5rem;
+  font-weight: 300;
+  /* display: block; */
+  color: #78b6f7;
+  text-transform: lowercase;
+  letter-spacing: -10px;
+  /* padding-left: 80px; */
+}
+
+.inner-container {
+  background-color: #b9cddf;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 40px;
+  position: relative;
+  width: 100%;
+}
+.h3 {
+  text-align: center;
+  margin-top: 75px;
+  background-color: #fff;
+  display: inline-block;
+  padding: 10px 50px;
+  margin: 49px auto 20px;
+  display: block;
+  width: 360px;
+}
+section#main-sec{
+  /* background-image: url('C:/Users/Dave/OneDrive/Desktop/Wedding Invitation/assets/1-227.jpg'); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+section#main-sec .inner-container {
+    background-color: transparent;
+    box-shadow: none;
+    overflow: visible;
+}
+section#main-sec h2.title, section#main-sec  .h3 {
+    font-family: 'Space Grotesk';
+    font-weight: 800;
+}
+.section {
+  height: 100%;
+}
+h2.title, .h3 {
+  position: relative;
+  z-index: 1;
+}
+h2.title {
+  font-size: 7rem;
+  line-height: 4rem;
+  position: relative;
+  z-index: 3;
+}
+/* section#second-sec .inner-container::before {
+  content: '';
+  position: absolute;
+  background-color: #2e2e2ead;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100%;
+  z-index: 2;
+} */
+/* .inner-container {
+  display: flex;
+  flex-wrap: wrap;
+} */
+section#main-sec .inner-container .col-2 {
+  width: 100%;
+  flex: 0 0 auto;
+  text-align: right;
+}
+.inner-container {
+  box-shadow: 0px 0px 15px #00000059;
+}
+.countdown-container {
+  display: flex;
+  gap: 20px;
+  text-align: center;
+  justify-content: center;
+}
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+}
+.countdown-number {
+  color: #fff;
+  font-size: 130px;
+  line-height: 130px;
+}
+.countdown-label {
+  color: #fff;
+  font-size: 20px;
+  margin-top: 5px;
+}
+div#countdown .countdown-item:last-child .countdown-number {
+  color: #81b7f9;
+}
+.cont {
+  position: relative;
+  z-index: 5;
+}
+section#second-sec .col-2 {
+  width: 100%;
+  text-align: right;
+  flex: 0 0 auto;
+}
+.cont ul {
+  display: block;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cont h3 {
+  font-size: 60px;
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 300;
+}
+.cont ul li {
+  color: #fff;
+  font-family: "Space Grotesk", sans-serif;
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: end;
+}
+.cont ul li {
+  color: #ffffff;
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: end;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.cont ul li span, .cont ul li strong {
+    font-family: "Space Grotesk", sans-serif;
+    text-transform: uppercase;
+    color: #7ec3ff;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+/* section#second-sec {
+  height: 100%;
+} */
+.cont h3 {
+  
+  text-align: center;
+}
+#main-sec {
+    position: relative;
+    overflow: hidden;
+    padding: 250px 0 ;
+}
+
+#main-sec .parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150%; /* Bigger height to allow parallax movement */
+ background-image: url('C:/Users/Dave/OneDrive/Desktop/Wedding Invitation/assets/1-227.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  transform: translateY(0);
+  transition: transform 0.1s ease-out;
+}
+.no-bg h2.title {
+    color: #2f2f2f;
+    line-height: normal;
+}
+.no-bg .cont h3 {
+    color: #2f2f2f;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+.no-bg  .cont ul li {
+    color: #2f2f2f !important;
+    font-weight: 700 !important;
+}
+.no-bg .inner-container {
+    background-color: transparent;
+    box-shadow: none !important;
+}
+.section:not(#main-sec) {
+    height: 100%;
+    padding: 50px 0 100px;
+}
+.no-bg  .cont ul li {
+    color: #2f2f2f !important;
+    font-weight: 700 !important;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.no-bg h2.title .b-color {
+    display: inline-block;
+    color: #81b7f9;
+}
+.list {
+    text-align: center;
+}
+ul.two-cols {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+ul.two-cols.center-col {
+
+    justify-content: center;
+}
+ul.two-cols li {
+    flex: 0 0 auto;
+    width: 50%;
+}
+.inner-item img {
+    width: 200px;
+    margin: 0 auto;
+}
+.color-palette {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.color {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: -30px;
+    border: 2px solid #d7d7d7;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+    color: transparent;
+    font-size: 0;
+}
+/* Optional: prevent the first circle from being pushed left */
+.color:first-child {
+  margin-left: 0;
+}
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    #viewBtn {
+      font-size: 1.2rem;
+      padding: 0.8em 1.5em;
+    }
+  
+    p {
+      font-size: 18px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #viewBtn {
+      font-size: 1rem;
+      padding: 0.7em 1.2em;
+    }
+  
+    p {
+      font-size: 16px;
+    }
+    .title span {
+    display: block;
+}
+.title {
+    font-size: 5rem;
+    line-height: 6rem;
+
+}
+.title span {
+    font-size: 3rem;
+}
+.countdown-number {
+    color: #fff;
+    font-size: 50px;
+    line-height: 60px;
+}
+.h3 {
+    width: 80%;
+    margin: 50px auto;
+    padding: 10px 20px;
+}
+.h3.no-sx {
+    background-color: transparent;
+    top: -30px;
+    font-size: 15px;
+    color: #ffff;
+    font-weight: 300 !important;
+    margin: 0 auto 20px;
+    width: 100%;
+    letter-spacing: 10px;
+}
+#main-sec {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0 50px;
+    background-color: #2f2f2f;
+}
+h2.title {
+    font-size: 3rem;
+    line-height: 4rem;
+    position: relative;
+    z-index: 3;
+}
+.no-bg .title span {
+    display: inline-block;
+}
+  }
+  

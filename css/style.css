@@ -11,6 +11,10 @@
   font-weight: normal;
   font-style: normal;
 }
+:root {
+  --color: red;
+  --size: 0;
+}
 html, body {
     margin: 0;
     padding: 0;
@@ -44,7 +48,34 @@ html, body {
   align-items: center;
   justify-content: center;
 }
-
+.heart-container {
+  position: absolute;
+  opacity: 1;
+}
+.heart {
+  width: var(--size);
+  height: var(--size);
+  transform: rotate(45deg);
+  transform-origin: center;
+  position: relative;
+  background: var(--color);
+  margin: 10px auto;
+}
+.heart:before,
+.heart:after {
+  content: "";
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: var(--color);
+}
+.heart:before {
+  left: calc(var(--size) / 2 * -1);
+}
+.heart:after {
+  top: calc(var(--size) / 2 * -1);
+}
 .row-top {
   top: 0;
   background-color: #4B667C;
@@ -117,10 +148,22 @@ canvas {
     height: 100%;
     z-index: 1;
     max-height: 100%;
-    object-fit: cover; /* Ensures the video covers the screen without distortion */
-    pointer-events: none; /* Prevents interaction with the video while scrolling */
-  }
-  
+    object-fit: cover;
+    pointer-events: none;
+    z-index: -1;
+}
+  section#third-sec::after {
+    content: '';
+    background-color: #ffffffe0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+}
   /* Responsive typography */
   p {
     font-family: Helvetica, Arial, sans-serif;
@@ -201,14 +244,16 @@ section#main-sec h2.title, section#main-sec  .h3 {
     font-weight: 800;
 }
 .section {
-  height: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
 }
 h2.title, .h3 {
   position: relative;
   z-index: 1;
 }
 h2.title {
-  font-size: 7rem;
+  font-size: 6rem;
   line-height: 4rem;
   position: relative;
   z-index: 3;
@@ -306,9 +351,10 @@ section#second-sec .col-2 {
 .cont ul li span, .cont ul li strong {
     font-family: "Space Grotesk", sans-serif;
     text-transform: uppercase;
-    color: #7ec3ff;
-    font-size: 25px;
+    color: #194972;
+    font-size: 30px;
     margin-bottom: 15px;
+    line-height: 21px;
 }
 /* section#second-sec {
   height: 100%;
@@ -329,7 +375,7 @@ section#second-sec .col-2 {
   left: 0;
   width: 100%;
   height: 150%; /* Bigger height to allow parallax movement */
- background-image: url('https://github.com/user-attachments/assets/57b26ff2-2323-4202-bd75-496133f01e87');
+ background-image: url('https://boir-registration.org/dnd-images/1-227.jpg');
   background-size: cover;
   background-position: center;
   z-index: -1;
@@ -419,6 +465,145 @@ section#sixth-sec .col-2::after {
     height: 70px;
     z-index: 9;
 }
+.background-text {
+    position: absolute;
+    white-space: nowrap;
+    font-size: 50vw;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.05);
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    text-transform: uppercase;
+    font-family: 'Space Grotesk';
+}
+section#third-sec2 {
+    background-color: #1d569d;
+}
+
+section#second-sec ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+section#second-sec ul li {
+    flex: 0 0 auto;
+    width: 45%;
+}
+section#second-sec ul li img {
+    width: 250px;
+    margin: 30px auto;
+}
+.btn {
+    position: relative;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #6ba0e3;
+    padding: 10px 30px;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    border-radius: 100px;
+    text-decoration: none;
+    margin-top: 30px;
+}
+.btn span {
+    font-size: 18px !important;
+    position: relative;
+    pointer-events: none;
+    color: #fff !important;
+    font-weight: 400 !important;
+    text-decoration: none !important;
+}
+.btn::before {
+  --size: 0;
+  content: '';
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  background: radial-gradient(circle closest-side, #2a579f, transparent);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  transition: width .2s ease, height .2s ease;
+}
+.btn:hover::before {
+  --size: 250px;
+}
+section#third-sec2 .cont ul li span, section#third-sec2 .cont ul li strong {
+    color: #d8e3f3;
+}
+section#third-sec2 
+ .list div {
+    color: #ffefef;
+}
+.no-sx, h1.title, .h3, #countdown {
+  opacity: 0;
+
+}
+[data-intro] {
+  opacity: 0;
+  visibility: hidden;
+}
+/* 
+.background-text-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.background-text {
+  white-space: nowrap;
+  font-size: 2rem;
+  will-change: transform;
+} */
+section#fifth-sec2 .inner-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+section#fifth-sec2 .inner-container .col-1, section#fifth-sec2 .inner-container .col-2 {
+    flex: 0 0 auto;
+    width: 80%;
+    border: 2px solid #5083b6;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #5083b6;
+    flex-wrap: wrap;
+}
+section#fifth-sec2 .inner-container .col-1 p, section#fifth-sec2 .inner-container .col-2 p {
+    color: #fff;
+}
+section#fifth-sec2 img {
+    width: 250px;
+    display: block;
+    margin: 0 auto;
+}
+section#fifth-sec2 .inner-container .col-1 p b {
+    font-family: 'Shadows Into Light';
+    display: block;
+    font-size: 36px;
+}
+section#second-sec ul li:last-child {
+    width: 80%;
+}
+section#fifth-sec2 h3 {
+    color: #fff !important;
+    font-family: 'Space Grotesk';
+    font-size: 4rem;
+    text-align: center;
+    margin: 0;
+}
   /* Responsive Styles */
   @media (max-width: 768px) {
     #viewBtn {
@@ -458,7 +643,7 @@ section#sixth-sec .col-2::after {
 }
 .h3 {
     width: 80%;
-    margin: 50px auto;
+    margin: 30px auto 10px;
     padding: 10px 20px;
 }
 .h3.no-sx {
@@ -468,8 +653,8 @@ section#sixth-sec .col-2::after {
     color: #ffff;
     font-weight: 300 !important;
     margin: 0 auto 20px;
-    width: 100%;
-    letter-spacing: 10px;
+    width: auto !important;
+    letter-spacing: 7px;
 }
 #main-sec {
     position: relative;
@@ -485,6 +670,106 @@ h2.title {
 }
 .no-bg .title span {
     display: inline-block;
+}
+#typewriter-text {
+  font-family: monospace;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  color:#fff;
+  border-right: 2px solid #fff;
+}
+#main-sec .parallax-bg {
+
+    z-index: 1;
+}
+section#main-sec .inner-container {
+    z-index: 1;
+}
+.section:not(#main-sec) {
+    padding: 20px 25px 20px;
+}
+section#second-sec ul li img {
+    width: 100px;
+    margin: 10px auto;
+}
+.cont ul li span, .cont ul li strong {
+    font-family: "Space Grotesk", sans-serif;
+    text-transform: uppercase;
+    color: #194972;
+    font-size: 20px;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+section#second-sec ul li {
+    flex: 0 0 auto;
+    width: 100%;
+    margin-bottom: 45px;
+}
+section#second-sec ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    text-align: center;
+}
+.no-bg .cont h3 {
+    color: #2f2f2f;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.background-text {
+    font-size: 170vw;
+}
+h2.title {
+    margin-bottom: 25px;
+}
+section#third-sec2 
+ .list div {
+    color: #ffefef;
+    font-size: 14px;
+    font-weight: 400;
+}
+ul.two-cols li {
+    flex: 0 0 auto;
+    width: 100%;
+}
+ul.two-cols li {
+    flex: 0 0 auto;
+    width: 100%;
+    font-size: 14px;
+    line-height: 15px;
+}
+.color {
+    width: 65px;
+    height: 65px;
+}
+section#fifth-sec2 .inner-container .col-1 p b {
+    font-family: 'Shadows Into Light';
+    display: block;
+    font-size: 20px;
+}
+section#fifth-sec2 h3 {
+    color: #fff !important;
+    font-family: 'Space Grotesk';
+    font-size: 2rem;
+    text-align: center;
+    margin: 0;
+}
+.countdown-number {
+    color: #fff;
+    font-size: 76px;
+    line-height: 60px;
+}
+.h3:not(.no-sx) {
+    text-align: center;
+    margin-top: 0;
+    background-color: transparent;
+    font-family: 'Brittany Signature' !important;
+    font-size: 18px;
+    color: #fff;
 }
   }
   

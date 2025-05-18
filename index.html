@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eunice and Dave</title>
+    <title>Eunice and Dave Wedding</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
-    <link rel="icon" href="https://github.com/user-attachments/assets/157bdd3c-63ca-422e-9579-109b387e58dd" type="image/png" />
+    <link rel="icon" href="./assets/logo.ico" type="image/x-icon" />
 <!-- Open Graph Tags -->
 <meta property="og:title" content="Dave & Eunice Wedding" />
 <meta property="og:description" content="You're invited to celebrate our forever." />
@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://github.com/user-attachments/assets/84d47e28-5a43-4e11-b9e1-b5198be63fa3" />
 </head>
 
-<body>
+<body class="xcont">
     <div id="preloader">
         <div class="preload-row row-top"></div>
 
@@ -40,12 +40,12 @@
             <div class="container">
                 <div class="inner-container">
                     <div class="col-1">
-                        <div class="h3 no-sx" data-scroll data-animate="fade-in">THE WEDDING OF</div>
-                        <h1 class="title" data-scroll data-animate="fade-in">Dave <span>and</span> Eunice</h1>
-                        <div class="h3" data-scroll data-animate="fade-in">#FromNiceBeginningstoDave-ineForever</div>
+                        <div class="h3 no-sx" data-scroll data-intro>THE WEDDING OF</div>
+                        <h1 class="title" data-scroll data-intro>Dave <span>and</span> Eunice</h1>
+                        <div class="h3" data-scroll data-intro>#FromNiceBeginningstoDave-ineForever</div>
                     </div>
                     <div class="col-2">
-                        <div id="countdown" class="countdown-container">
+                        <div id="countdown" class="countdown-container" data-intro>
                             <div class="countdown-item">
                                 <div class="countdown-number">0</div>
                                 <div class="countdown-label">Days</div>
@@ -69,10 +69,13 @@
         </section>
 
         <section id="second-sec" class="section no-bg" data-scroll-section>
+            <div class="background-text" id="animatedTextRight">
+    Where and When Where and When Where and When Where and When
+  </div>
             <div class="container">
                 <div class="inner-container" data-scroll data-animate="fade-up">
                     <div class="col-1">
-                        <h2 class="title" data-scroll data-animate="fade-in">Where <span>and</span> When</h2>
+                        <h2 class="title " data-scroll data-animate="fade-in">Where <span>and</span> When</h2>
                     </div>
                     <div class="col-2">
                         <div class="cont">
@@ -83,12 +86,16 @@
                                         2pm
                                     </span>
                                     <strong>Ceremony</strong>
+                                    <img src="https://boir-registration.org/dnd-images/church-new-icon.png" alt="Church">
                                     Queen of Peace Parish, Redemptorist - Diocese of Bacolod
+                                    <a href="https://maps.app.goo.gl/Zp6XZQfqNUXep9Yq9" class="btn loc-btn" target="_blank"><span>View Location</span></a>
                                 </li>
                                 <li data-scroll data-animate="fade-in">
                                     <span>6pm</span>
                                     <strong>Reception</strong>
+                                    <img src="https://boir-registration.org/dnd-images/reception-icon.png" alt="Reception">
                                     L Fisher, Bacolod City
+                                    <a href="https://maps.app.goo.gl/uo1maFrKdUBLFUCa8" class="btn loc-btn" target="_blank"><span>View Location</span></a>
                                 </li>
                                 <li data-scroll data-animate="fade-in">
                                     <iframe style="border-radius:12px"
@@ -105,18 +112,21 @@
             </div>
         </section>
 
-        <section id="third-sec" class="section no-bg" data-scroll-section>
+        <section id="third-sec2" class="section no-bg" data-scroll-section>
+            <div class="background-text" id="animatedText">
+    Entourage Entourage Entourage Entourage
+  </div>
+  
             <div class="container">
                 <div class="inner-container" data-scroll data-animate="fade-up">
 
                     <div class="col-1">
-                        <h2 class="title" data-scroll-pin data-animate="fade-in">The <div class="b-color">Entourage
+                        <h2 class="title" data-animate="fade-in">The <div class="b-color">Entourage
                             </div>
                         </h2>
                     </div>
                     <div class="col-2">
                         <div class="cont">
-                            <h3 data-scroll data-animate="fade-in">MONDAY, 08.18.2025</h3>
                             <ul>
                                 <li data-scroll data-animate="fade-in">
                                     <strong>NUPTIALS</strong>
@@ -211,9 +221,7 @@
             </div>
         </section>
         <section id="third-sec" class="section no-bg" data-scroll-section>
-            <div class="container">
-                <div class="inner-container" data-scroll data-animate="fade-up">
-                    <!-- <video id="v0"
+            <video id="v0"
                     tabindex="0"
                     preload="preload"
                     autoplay
@@ -225,7 +233,13 @@
                     <source src="./assets/slow_vid.webm" type='video/webm; codecs="vp8, vorbis"'>
                     <source src="./assets/slow_vid_minified.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
                     <p>Your browser does not support the video tag or the file format.</p>
-                </video> -->
+                </video>
+                <div class="background-text" id="animatedTextRight">
+    Principal Sponsors Principal Sponsors Principal Sponsors Principal Sponsors
+  </div>
+            <div class="container">
+                <div class="inner-container" data-scroll data-animate="fade-up">
+                    
                     <div class="col-1">
                         <h2 class="title" data-scroll data-animate="fade-in">
                             <div class="b-color">Principal</div> Sponsors
@@ -332,9 +346,9 @@
                                     <div class="list">
                                         <div class="inner-item">Formal Floor-length Gown</div>
                                         <div class="inner-item">
-                                            <img src="https://github.com/user-attachments/assets/f73cbdf7-c934-4a4c-bba0-403950c9a8a1"
+                                            <img src="https://boir-registration.org/dnd-images/dress.png"
                                                 alt=""
-                                                srcset="https://github.com/user-attachments/assets/f73cbdf7-c934-4a4c-bba0-403950c9a8a1">
+                                                srcset="https://boir-registration.org/dnd-images/dress.png">
                                         </div>
                                     </div>
                                 </li>
@@ -344,9 +358,9 @@
                                         <div class="inner-item">Barong Tagalog (Long-sleeved) <br>with black pants and
                                             formal shoes</div>
                                         <div class="inner-item">
-                                            <img src="https://github.com/user-attachments/assets/46c68c00-a2f0-46f9-8aa6-e55a70311586"
+                                            <img src="https://boir-registration.org/dnd-images/barong.png"
                                                 alt=""
-                                                srcset="https://github.com/user-attachments/assets/46c68c00-a2f0-46f9-8aa6-e55a70311586">
+                                                srcset="https://boir-registration.org/dnd-images/barong.png">
                                         </div>
                                     </div>
                                 </li>
@@ -368,16 +382,38 @@
                                 </li>
                             </ul>
 
-                            <p style="text-align: center;">We would be delighted if you shared your captured moments
+                            
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <p style="text-align: center;">We would be delighted if you shared your captured moments
                                 with us. Kindly tag us in your photos on social media using the hashtag
                                 <b>#FromNiceBeginningstoDave-ineForever</b></p>
-                        </div>
                     </div>
 
                 </div>
             </div>
         </section>
+           <section id="fifth-sec2" class="section no-bg" data-scroll-section>
+            <div class="container">
+                <div class="inner-container" data-scroll data-animate="fade-up">
+                
+                    <div class="col-1">
+                        <img src="https://boir-registration.org/dnd-images/snap-icon (2).png">
+                        <p style="text-align: center;">We would be delighted if you shared your captured moments
+                                with us. Kindly tag us in your photos on social media using the hashtag
+                                <b>#FromNiceBeginningstoDave-ineForever</b></p>
+                    </div>
+                    <div class="col-2">
+                       <h3 data-scroll data-animate="fade-in">ADULT ONLY EVENT</h3>
+                            <p style="text-align: center;" data-scroll data-animate="fade-in">We politely request no
+                                children unless they are part of the entourage. Thank you for helping us keep this a
+                                special day for everyone!</p>
+                    </div>
 
+                </div>
+            </div>
+        </section>
         <section id="sixth-sec" class="section no-bg" data-scroll-section>
             <div class="container">
                 <div class="inner-container" data-scroll data-animate="fade-up">
@@ -389,10 +425,8 @@
                     </div>
                     <div class="col-2">
                         <div class="cont">
-                            <h3 data-scroll data-animate="fade-in">ADULT ONLY EVENT</h3>
-                            <p style="text-align: center;" data-scroll data-animate="fade-in">We politely request no
-                                children unless they are part of the entourage. Thank you for helping us keep this a
-                                special day for everyone!</p>
+                            
+                       
                             <p style="text-align: center;" data-scroll data-animate="fade-in">We are so excited to
                                 celebrate this special day with you!<br>
                                 Due to limited seating, we kindly ask that only the guest(s) named on the invitation
@@ -419,7 +453,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
+<script>
+document.querySelectorAll('.btn').forEach(function(button) {
+	button.addEventListener('mousemove', function (e) {
+		const rect = button.getBoundingClientRect();
+		const x = e.clientX - rect.left;
+		const y = e.clientY - rect.top;
 
+		button.style.setProperty('--x', x + 'px');
+		button.style.setProperty('--y', y + 'px');
+	});
+});
+</script>
 </body>
 
 </html>

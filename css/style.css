@@ -771,5 +771,15 @@ section#fifth-sec2 h3 {
     font-size: 18px;
     color: #fff;
 }
+section#third-sec .container {
+    z-index: 2;
+    position: relative;
+}
+#v0 {
+    z-index: 1;
+}
+section#third-sec::after {
+    z-index: 1;
+}
   }
   

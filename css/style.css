@@ -636,6 +636,8 @@ section#fifth-sec2 h3 {
     font-size: 5rem;
     line-height: 6rem;
     overflow: visible !important;
+    z-index: 9;
+    position: relative;
 }
 .title span {
     font-size: 3rem;

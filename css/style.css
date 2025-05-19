@@ -603,6 +603,11 @@ section#fifth-sec2 h3 {
     text-align: center;
     margin: 0;
 }
+h2.title {
+    
+    line-height: 8rem !important;
+    padding: 50px 0;
+}
   /* Responsive Styles */
   @media (max-width: 768px) {
     #viewBtn {
@@ -700,7 +705,7 @@ section#second-sec ul li img {
     color: #194972;
     font-size: 20px;
     margin-bottom: 10px;
-    line-height: 20px;
+    line-height: 30px;
 }
 section#second-sec ul li {
     flex: 0 0 auto;

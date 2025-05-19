@@ -22,7 +22,7 @@ function initScrollAnimations() {
       scrollTrigger: {
         trigger: el,
         scroller: scrollContainer,
-        start: "top 50%",
+        start: "top 90%",
         end: "bottom 10%",
         toggleActions: "play none none reset",
         invalidateOnRefresh: true,
@@ -33,45 +33,39 @@ function initScrollAnimations() {
 }
 
 function animateIntroText() {
-  // Hide all target elements before animation starts
+  // Set all target elements to be hidden and fully transparent initially
   gsap.set([".no-sx", "h1.title", ".h3:not(.no-sx)", "#countdown"], {
     opacity: 0,
-    visibility: "hidden",
-    y: 40,
-    scale: 0.95
+    visibility: "hidden"
   });
 
   const timeline = gsap.timeline();
 
   timeline
     .to(".no-sx", {
-      y: 0,
       opacity: 1,
       visibility: "visible",
       duration: 1,
-      ease: "power3.out"
+      ease: "power1.out"
     })
     .to("h1.title", {
-      y: 0,
       opacity: 1,
       visibility: "visible",
       duration: 1,
-      ease: "power3.out"
+      ease: "power1.out"
     }, "-=0.6")
     .to(".h3:not(.no-sx)", {
-      y: 0,
       opacity: 1,
       visibility: "visible",
       duration: 1,
-      ease: "power3.out"
+      ease: "power1.out"
     }, "-=0.6")
     .to("#countdown", {
-      scale: 1,
       opacity: 1,
       visibility: "visible",
       duration: 1,
-      ease: "back.out(1.7)"
-    }, "-=0.8");
+      ease: "power1.out"
+    }, "-=0.6");
 }
 
 const text = "#FromNiceBeginningstoDave-ineForever";

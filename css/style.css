@@ -27,7 +27,7 @@ html, body {
     font-family: "Shadows Into Light", cursive;
     font-weight: 400;
     font-style: normal;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
 
 #preloader {
@@ -631,7 +631,7 @@ section#fifth-sec2 h3 {
 .title {
     font-size: 5rem;
     line-height: 6rem;
-
+    overflow: visible !important;
 }
 .title span {
     font-size: 3rem;
@@ -780,6 +780,9 @@ section#third-sec .container {
 }
 section#third-sec::after {
     z-index: 1;
+}
+section#main-sec {
+    height: 100vh !important;
 }
   }
   

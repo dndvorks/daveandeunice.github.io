@@ -21,12 +21,7 @@ html, body {
     /* font-family: Arial, sans-serif; */
     font-family: "Josefin Sans", sans-serif;
     font-optical-sizing: auto;
-    height: 100%;
   }
-  [data-scroll-container] {
-  overflow: hidden;
-}
-
   body {
     font-family: "Shadows Into Light", cursive;
     font-weight: 400;

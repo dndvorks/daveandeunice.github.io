@@ -800,5 +800,9 @@ section#main-sec {
 .section {
     overflow-x: hidden;
 }
+h2.title{
+  padding: 20px 0;
+  line-height: 4rem !important;
+}
   }
   

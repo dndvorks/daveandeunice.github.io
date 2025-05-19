@@ -22,7 +22,7 @@ function initScrollAnimations() {
       scrollTrigger: {
         trigger: el,
         scroller: scrollContainer,
-        start: "top 85%",
+        start: "top 50%",
         end: "bottom 10%",
         toggleActions: "play none none reset",
         invalidateOnRefresh: true,

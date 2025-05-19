@@ -21,12 +21,13 @@ html, body {
     /* font-family: Arial, sans-serif; */
     font-family: "Josefin Sans", sans-serif;
     font-optical-sizing: auto;
+    overflow-x: hidden !important;
   }
   body {
     font-family: "Shadows Into Light", cursive;
     font-weight: 400;
     font-style: normal;
-    overflow-x: hidden !important;
+    
   }
 
 #preloader {
@@ -788,8 +789,9 @@ section#third-sec::after {
     z-index: 1;
 }
 section#main-sec {
-    height: 100vh !important;
+    height: 100%;
     padding-top: 10px;
+    padding: 50px 0 80px;
 }
 .col-1 {
     overflow: visible !important;
@@ -803,6 +805,17 @@ section#main-sec {
 h2.title{
   padding: 20px 0;
   line-height: 4rem !important;
+}
+.title span {
+    font-size: 3rem;
+    line-height: 40px;
+}
+.title {
+    font-size: 5rem;
+    line-height: 10rem;
+}
+.h3.no-sx {
+    top: 0;
 }
   }
   

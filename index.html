@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Eunice and Dave</title>
-    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="https://boir-registration.org/dnd-images/logo.png" type="image/png" sizes="32x32" />
 <!-- Open Graph Tags -->
 <meta property="og:title" content="Dave & Eunice Wedding" />
@@ -21,6 +22,7 @@
 <!-- Optional: Twitter Card -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://boir-registration.org/dnd-images/de-preview.jpg" />
+
 </head>
 
 <body class="xcont">
@@ -74,7 +76,7 @@
     Where and When Where and When Where and When Where and When
   </div>
             <div class="container">
-                <div class="inner-container" data-scroll data-animate="fade-up">
+                <div class="inner-container">
                     <div class="col-1">
                         <h2 class="title " data-scroll data-animate="fade-in">Where <span>and</span> When</h2>
                     </div>
@@ -120,7 +122,7 @@
   </div>
   
             <div class="container">
-                <div class="inner-container" data-scroll data-animate="fade-up">
+                <div class="inner-container" data-scroll>
 
                     <div class="col-1">
                         <h2 class="title" data-animate="fade-in">The <div class="b-color">Entourage
@@ -240,7 +242,7 @@
     Principal Sponsors Principal Sponsors Principal Sponsors Principal Sponsors
   </div>
             <div class="container">
-                <div class="inner-container" data-scroll data-animate="fade-up">
+                <div class="inner-container" data-scroll>
                     
                     <div class="col-1">
                         <h2 class="title" data-scroll data-animate="fade-in">
@@ -287,7 +289,7 @@
         </section>
         <section id="fourth-sec" class="section no-bg" data-scroll-section>
             <div class="container">
-                <div class="inner-container" data-scroll data-animate="fade-up">
+                <div class="inner-container" data-scroll>
                     <div class="col-1">
                         <h2 class="title" data-scroll data-animate="fade-in">
                             <div class="b-color">Secondary</div> Sponsors
@@ -330,7 +332,7 @@
         </section>
         <section id="fifth-sec" class="section no-bg" data-scroll-section>
             <div class="container">
-                <div class="inner-container" data-scroll data-animate="fade-up">
+                <div class="inner-container">
 
                     <div class="col-1">
                         <h2 class="title" data-scroll data-animate="fade-in">
@@ -394,15 +396,15 @@
         </section>
            <section id="fifth-sec2" class="section no-bg" data-scroll-section>
             <div class="container">
-                <div class="inner-container" data-scroll data-animate="fade-up">
+                <div class="inner-container" data-scroll>
                 
-                    <div class="col-1">
+                    <div class="col-1" data-scroll data-animate="fade-up">
                         <img src="https://boir-registration.org/dnd-images/snap-icon (2).png">
                         <p style="text-align: center;">We would be delighted if you shared your captured moments
                                 with us. Kindly tag us in your photos on social media using the hashtag
                                 <b>#FromNiceBeginningstoDave-ineForever</b></p>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2" data-scroll data-animate="fade-up">
                        <h3 data-scroll data-animate="fade-in">ADULT ONLY EVENT</h3>
                             <p style="text-align: center;" data-scroll data-animate="fade-in">We politely request no
                                 children unless they are part of the entourage. Thank you for helping us keep this a
@@ -414,7 +416,7 @@
         </section>
         <section id="sixth-sec" class="section no-bg" data-scroll-section>
             <div class="container">
-                <div class="inner-container" data-scroll data-animate="fade-up">
+                <div class="inner-container" data-scroll>
 
                     <div class="col-1">
                         <h2 class="title" data-scroll data-animate="fade-in">
@@ -449,9 +451,11 @@
     <script src="./js/locomotive-scroll.min.js"></script>
     <script src="./js/gsap.min.js"></script>
     <script src="./js/ScrollTrigger.min.js"></script>
+
     <script src="./js/scripts.js"></script>
 
 <script>
+    // AOS.init();
 document.querySelectorAll('.btn').forEach(function(button) {
 	button.addEventListener('mousemove', function (e) {
 		const rect = button.getBoundingClientRect();

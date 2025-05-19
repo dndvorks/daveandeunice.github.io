@@ -783,6 +783,10 @@ section#third-sec::after {
 }
 section#main-sec {
     height: 100vh !important;
+    padding-top: 10px;
+}
+.col-1 {
+    overflow: visible !important;
 }
   }
   

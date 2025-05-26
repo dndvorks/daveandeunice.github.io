@@ -801,7 +801,12 @@ section#section6 span {
     transform: scale(1.1) rotate(-30deg);
   }
 }
-
+@media screen and (max-width:1680px) {
+    .o-container {
+        max-width: 100%;
+        width: 90%;
+    }
+}
 @media screen and (max-width:767px) {
    .o-container {
     max-width: 100%;

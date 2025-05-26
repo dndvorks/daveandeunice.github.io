@@ -801,6 +801,16 @@ section#section6 span {
     transform: scale(1.1) rotate(-30deg);
   }
 }
+.reminders .inner-remind:last-child h3 {
+    font-size: 50px !important;
+    font-family: 'Motterdam';
+    font-weight: 300;
+}
+.reminders .inner-remind:last-child img {
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    width: 200px !important;
+}
 @media screen and (max-width:1680px) {
     .o-container {
         max-width: 100%;
@@ -1044,5 +1054,11 @@ section#section4 img {
     margin-top: 20px;
     display: block;
     font-size: 16px !important;
+}
+section#section4 .reminders .inner-remind:last-child h3 {
+    font-size: 30px !important;
+}
+#section6 span, #section6 span a {
+    font-size: 11px;
 }
 }

@@ -1008,7 +1008,7 @@ section#section4 h3 {
 }
 ._text3{
     opacity: 1 !important;
-    overflow:visible !important;
+    overflow: visible !important;
 }
 .grid .grid-item:nth-child(2) {
     background-position: top center;
@@ -1024,5 +1024,8 @@ section#spotify-embed .content-w h3 {
 }
 .spotify-embed {
     padding: 30px 0;
+}
+.text3{
+    opacity: 1 !important;
 }
 }

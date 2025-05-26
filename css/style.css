@@ -103,17 +103,34 @@ body {
   font-size: 1.5rem;
   white-space: nowrap;
   overflow: hidden;
-  color:#2f2f2f;
-  border-right: 2px solid #2f2f2f;
+  color: #fff;
+  padding: 5px;
+  /* Optional: Add a border cursor if preferred
+  border-right: 2px solid #2f2f2f; 
+  */
 }
 
 #typewriter-text::after {
-  content: '|';
+  content: '♡';
+  display: inline-block;
   animation: blink 0.8s infinite;
+  color: #fff;
 }
+
+/* Blinking/Scaling animation for the heart cursor */
 @keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.1);
+  }
 }
 div#section0 {
     background-image: url('https://boir-registration.org/dnd-images/1-227.jpg');

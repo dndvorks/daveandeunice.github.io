@@ -5,42 +5,59 @@ const scroll = new LocomotiveScroll({
   class: 'is-inview',
 });
 
-// Apply fixed masonry grid and set background images after images loaded
 function applyFixedMasonryGrid() {
   const items = document.querySelectorAll('.grid-item');
-  const spans = [4, 1, 1, 1, 3, 1, 4]; // fixed spans as you wanted
+  const spans = [4, 1, 1, 1, 3, 1, 4]; // fixed spans for desktop
 
-  // Collect all image URLs from data-bg
+  // Collect image URLs
   const bgUrls = Array.from(items)
     .map(item => item.getAttribute('data-bg'))
     .filter(Boolean);
 
-  // Create image elements to preload
+  // Preload all images
   const imageLoaders = bgUrls.map(url => {
     return new Promise((resolve) => {
       const img = new Image();
       img.src = url;
-      img.onload = img.onerror = resolve; // resolve on load or error
+      img.onload = img.onerror = resolve;
     });
   });
 
   Promise.all(imageLoaders).then(() => {
-    // All images loaded (or failed), apply styles
+    const windowWidth = window.innerWidth;
+
     items.forEach((item, index) => {
       const bg = item.getAttribute('data-bg');
       if (bg) {
         item.style.backgroundImage = `url('${bg}')`;
       }
-      const colSpan = spans[index] || 1;
-      item.style.gridColumn = `span ${colSpan}`;
+
+      // Responsive span logic
+      if (windowWidth <= 480) {
+        item.style.gridColumn = 'span 1'; // 2 columns defined in CSS
+      } else {
+        item.style.gridColumn = `span ${spans[index] || 1}`;
+      }
     });
 
-    // Tell Locomotive Scroll to update now that layout changed
-    scroll.update();
+    // Update Locomotive Scroll if available
+    if (typeof scroll !== 'undefined' && scroll.update) {
+      scroll.update();
+    }
   });
 }
 
+// Run on load and resize
 document.addEventListener('DOMContentLoaded', applyFixedMasonryGrid);
+window.addEventListener('resize', applyFixedMasonryGrid);
+
+
+// Run on DOM load and resize
+document.addEventListener('DOMContentLoaded', applyFixedMasonryGrid);
+window.addEventListener('resize', () => {
+  applyFixedMasonryGrid();
+});
+
 
 
 scroll.on('call', (func, dir, obj) => {

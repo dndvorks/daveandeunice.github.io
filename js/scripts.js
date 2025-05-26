@@ -61,6 +61,9 @@ window.addEventListener('resize', () => {
 
 
 scroll.on('call', (func, dir, obj) => {
+  // Disable animation on mobile (screen width <= 768px)
+  if (window.innerWidth <= 768) return;
+
   if (func === 'animateText3') {
     animateText3(obj.el);
   }

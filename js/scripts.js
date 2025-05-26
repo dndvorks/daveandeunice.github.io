@@ -1,3 +1,55 @@
+const scrollContainer = document.querySelector('[data-scroll-container]');
+const scroll = new LocomotiveScroll({
+  el: scrollContainer,
+  smooth: true,
+  class: 'is-inview',
+});
+
+// Apply fixed masonry grid and set background images after images loaded
+function applyFixedMasonryGrid() {
+  const items = document.querySelectorAll('.grid-item');
+  const spans = [4, 1, 1, 1, 3, 1, 4]; // fixed spans as you wanted
+
+  // Collect all image URLs from data-bg
+  const bgUrls = Array.from(items)
+    .map(item => item.getAttribute('data-bg'))
+    .filter(Boolean);
+
+  // Create image elements to preload
+  const imageLoaders = bgUrls.map(url => {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = url;
+      img.onload = img.onerror = resolve; // resolve on load or error
+    });
+  });
+
+  Promise.all(imageLoaders).then(() => {
+    // All images loaded (or failed), apply styles
+    items.forEach((item, index) => {
+      const bg = item.getAttribute('data-bg');
+      if (bg) {
+        item.style.backgroundImage = `url('${bg}')`;
+      }
+      const colSpan = spans[index] || 1;
+      item.style.gridColumn = `span ${colSpan}`;
+    });
+
+    // Tell Locomotive Scroll to update now that layout changed
+    scroll.update();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', applyFixedMasonryGrid);
+
+
+scroll.on('call', (func, dir, obj) => {
+  if (func === 'animateText3') {
+    animateText3(obj.el);
+  }
+});
+setupClipScrollReveal(scroll, '#section2');
+
 function initScrollAnimations() {
   const scrollContainer = document.querySelector('[data-scroll-container]');
 
@@ -31,42 +83,108 @@ function initScrollAnimations() {
     });
   });
 }
+document.querySelector('.btn').addEventListener('click', () => {
+  scroll.scrollTo('#section5'); // pass a selector string or an element
+});
 
-function animateIntroText() {
-  // Set all target elements to be hidden and fully transparent initially
-  gsap.set([".no-sx", "h1.title", ".h3:not(.no-sx)", "#countdown"], {
-    opacity: 0,
-    visibility: "hidden"
+
+
+function animateText3(selector = '.text3') {
+  const $elements = $(selector);
+
+  $elements.each(function () {
+    const $el = $(this);
+
+    if ($el.hasClass('animated')) {
+      return;
+    }
+
+    $el.addClass('visible animated');
+
+    const wrappedText = $el.text().replace(/([^\x00-\x80]|\w)/g, "<span class='_text3'>$&</span>");
+    $el.html(wrappedText);
+
+    const $chars = $el.find("._text3");
+
+    setTimeout(() => {
+      const tl = gsap.timeline();
+
+      tl.to($chars, {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        stagger: 0.04,
+        ease: "power2.out"
+      });
+
+      $el.data('timeline', tl);
+    }, 100);
+  });
+}
+
+
+
+function animateHeadAnimIn(containerSelector = 'h1[data-scroll]') {
+  const $container = $(containerSelector);
+  if ($container.length === 0) return;
+
+  // Select all .head-anim spans inside the container
+  const $animItems = $container.find('.head-anim');
+
+  // Kill old timeline if exists
+  if ($container.data('timeline')) {
+    $container.data('timeline').kill();
+  }
+
+  const tl = gsap.timeline();
+
+  tl.to($animItems, {
+    y: 0,
+    opacity: 1,
+    duration: 0.6,
+    stagger: 0.15,
+    ease: "power2.out"
   });
 
-  const timeline = gsap.timeline();
-
-  timeline
-    .to(".no-sx", {
-      opacity: 1,
-      visibility: "visible",
-      duration: 1,
-      ease: "power1.out"
-    })
-    .to("h1.title", {
-      opacity: 1,
-      visibility: "visible",
-      duration: 1,
-      ease: "power1.out"
-    }, "-=0.6")
-    .to(".h3:not(.no-sx)", {
-      opacity: 1,
-      visibility: "visible",
-      duration: 1,
-      ease: "power1.out"
-    }, "-=0.6")
-    .to("#countdown", {
-      opacity: 1,
-      visibility: "visible",
-      duration: 1,
-      ease: "power1.out"
-    }, "-=0.6");
+  $container.data('timeline', tl);
 }
+
+function setupClipScrollReveal(scrollInstance, selector) {
+  const section = document.querySelector(selector);
+  if (!section) return;
+
+  scrollInstance.on('scroll', (args) => {
+    const sectionTop = section.getBoundingClientRect().top;
+    const sectionHeight = section.offsetHeight;
+    const windowHeight = window.innerHeight;
+
+    const visibleAmount =
+      Math.min(
+        sectionHeight,
+        Math.max(0, windowHeight - sectionTop)
+      ) / sectionHeight;
+
+    // Clamp visibleAmount between 0 and 1
+    const progress = Math.max(0, Math.min(1, visibleAmount));
+
+    // Apply clip-path (reverse the progress so it reveals from top to bottom)
+    section.style.setProperty(
+      '--reveal-progress',
+      `${(1 - progress) * 100}%`
+    );
+
+    section.style.setProperty(
+      '--clip-path',
+      `inset(${(1 - progress) * 100}% 0 0 0)`
+    );
+
+    // Update the ::before clip-path
+    section.querySelector('::before'); // pseudo-elements can’t be updated directly
+    section.style.setProperty('--clip-path', `inset(${(1 - progress) * 100}% 0 0 0)`);
+  });
+}
+
+
 
 const text = "#FromNiceBeginningstoDave-ineForever";
 const el = document.getElementById("typewriter-text");
@@ -112,9 +230,7 @@ function startPreloaderExit() {
       document.getElementById("preloader").style.display = "none";
       document.body.style.overflow = "auto";
 
-      // ✅ Trigger scroll animations AFTER preloader is gone
-      initScrollAnimations();
-      animateIntroText(); 
+      animateHeadAnimIn();
     }
   });
 }
@@ -153,160 +269,3 @@ $(document).ready(function () {
   const timer = setInterval(updateCountdown, 1000);
   updateCountdown();
 });
-
-document.addEventListener("DOMContentLoaded", function () {
-  const scrollContainer = document.querySelector('[data-scroll-container]');
-
-  const scroll = new LocomotiveScroll({
-    el: scrollContainer,
-    smooth: true,
-    lerp: 0.09,
-    multiplier: 1.1,
-    class: 'is-inview',
-  });
-
-  // Link Locomotive Scroll with ScrollTrigger
-  gsap.registerPlugin(ScrollTrigger);
-  ScrollTrigger.scrollerProxy(scrollContainer, {
-    scrollTop(value) {
-      return arguments.length
-        ? scroll.scrollTo(value, 0, 0)
-        : scroll.scroll.instance.scroll.y;
-    },
-    getBoundingClientRect() {
-      return {
-        top: 0,
-        left: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      };
-    },
-    pinType: scrollContainer.style.transform ? "transform" : "fixed",
-  });
-
-  ScrollTrigger.addEventListener("refresh", () => scroll.update());
-  ScrollTrigger.refresh();
-
-
-
-  gsap.to("#animatedText", {
-      x: "-100%",
-      duration: 100,
-      ease: "linear",
-      repeat: -1
-    });
-
-     gsap.fromTo("#animatedTextRight", 
-      { x: "-100%" }, 
-      {
-        x: "0%",
-        duration: 100,
-        ease: "linear",
-        repeat: -1
-      }
-    );
-});
-
-
-//Initial References
-const container = document.querySelector(".xcont");
-let drawHearts;
-let mouseX = 0,
-  mouseY = 0;
-let hearts = [];
-//Red Shades
-// let colors = ["#ff0000", "#dc143c", "#ff4040", "#ed2939", "#fe2712", "#ed1c24"];
-//Events Object
-let colors = ["#81b7f9", "#a0c9fb", "#5da4f7", "#3c8af4", "#2573e6", "#0d5fd4"];
-let events = {
-  mouse: {
-    move: "mousemove",
-    stop: "mouseout",
-  },
-  touch: {
-    move: "touchmove",
-    stop: "touchend",
-  },
-};
-let deviceType = "";
-//Detect touch device
-const isTouchDevice = () => {
-  try {
-    //We try to create TouchEvent (It would fail for desktops and throw error)
-    document.createEvent("TouchEvent");
-    deviceType = "touch";
-    return true;
-  } catch (e) {
-    deviceType = "mouse";
-    return false;
-  }
-};
-//Random number between given range
-function randomNumberGenerator(min, max) {
-  return Math.random() * (max - min) + min;
-}
-//Create Hearts
-function startCreation() {
-  //If drawHearts = true only then start displaying hearts. This is done to stop hearts creation when mouse is not on the screen.
-  if (drawHearts) {
-    //Create Div
-    let div = document.createElement("div");
-    div.classList.add("heart-container");
-    //Set left and top based on mouse X and Y
-    div.style.left = mouseX + randomNumberGenerator(5, 50) + "px";
-    div.style.top = mouseY + randomNumberGenerator(5, 50) + "px";
-    //Random shade of Red
-    let randomColor =
-      colors[Math.floor(randomNumberGenerator(0, colors.length - 1))];
-    //heart dic
-    div.innerHTML = `<div class="heart"></div>`;
-    div.style.opacity = 1;
-    //Set the value of variable --size to random number
-    let root = document.querySelector(":root");
-    let sizeValue = randomNumberGenerator(10, 20);
-    //Random height/width value
-    //You can change this
-    root.style.setProperty("--size", sizeValue + "px");
-    root.style.setProperty("--color", randomColor);
-    container.appendChild(div);
-    //set visible flag for div
-    hearts.push({
-      visible: true,
-    });
-  }
-  updateHearts();
-  window.setTimeout(startCreation, 50);
-}
-function updateHearts() {
-  for (let i in hearts) {
-    //get div at current index
-    let heartContainer = document.getElementsByClassName("heart-container")[i];
-    //If visible
-    if (hearts[i].visible) {
-      heartContainer.style.opacity = +heartContainer.style.opacity - 0.1;
-      //If 0 set visible to false
-      if (heartContainer.style.opactiy == 0) {
-        hearts[i].visible = false;
-      }
-    } else {
-      //if div is not visible remove it and remove entry from hearts array
-      heartContainer.remove();
-      hearts.splice(i, 1);
-    }
-  }
-}
-isTouchDevice();
-document.addEventListener(events[deviceType].move, function (e) {
-  mouseX = isTouchDevice() ? e.touches[0].pageX : e.pageX;
-  mouseY = isTouchDevice() ? e.touches[0].pageY : e.pageY;
-  drawHearts = true;
-});
-document.addEventListener(events[deviceType].stop, function (e) {
-  drawHearts = false;
-});
-window.onload = () => {
-  drawHearts = false;
-  startCreation();
-};
-
-// Paperplanes

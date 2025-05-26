@@ -1028,4 +1028,21 @@ section#spotify-embed .content-w h3 {
 .text3{
     opacity: 1 !important;
 }
+.bg-clip-reveal::before {
+
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+section#section4 h3 {
+    font-size: 10vw !important;
+}
+section#section4 img {
+    margin: 0 auto 10px;
+}
+.inner-remind b {
+    color: #ffffff;
+    margin-top: 20px;
+    display: block;
+    font-size: 16px !important;
+}
 }

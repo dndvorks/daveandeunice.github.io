@@ -1078,4 +1078,7 @@ section#section4 .reminders .inner-remind:last-child h3 {
 #section6 span, #section6 span a {
     font-size: 11px;
 }
+  #typewriter-text::after {
+   font-size:20px;
+}
 }

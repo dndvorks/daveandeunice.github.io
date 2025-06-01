@@ -103,9 +103,9 @@ function initScrollAnimations() {
     });
   });
 }
-document.querySelector('.btn').addEventListener('click', () => {
-  scroll.scrollTo('#section5'); // pass a selector string or an element
-});
+// document.querySelector('.btn').addEventListener('click', () => {
+//   scroll.scrollTo('#section5'); // pass a selector string or an element
+// });
 
 
 
@@ -288,4 +288,37 @@ $(document).ready(function () {
 
   const timer = setInterval(updateCountdown, 1000);
   updateCountdown();
+});
+$(document).ready(function () {
+  // Set backgrounds
+  $('.grid-item').each(function () {
+    const bg = $(this).data('bg');
+    $(this).css('background-image', 'url(' + bg + ')');
+  });
+
+  // Initialize Slick
+  $('.slider').slick({
+    centerMode: true,
+    centerPadding: '60px',
+    slidesToShow: 3,
+    arrows: false,
+    dots: false,
+    autoplay: true,
+    autoplaySpeed: 0,        // No delay between transitions
+    speed: 5000,             // Duration of the slide animation
+    cssEase: 'linear',       // Smooth linear transition
+    infinite: true,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          dots: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
 });

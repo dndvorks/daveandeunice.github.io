@@ -880,11 +880,11 @@ section#sticky-wrapper h3 {
     height: 250px;
 }
 .loc span.loc-time {
-    font-size: 30px;
+    font-size: 20px;
 }
 span.loc-place {
-    font-size: 19px;
-    line-height: 22px;
+    font-size: 13px;
+    line-height: 20px;
 }
 section#section2 h3, section#section3 h3 {
     font-size: 12vw;
@@ -929,6 +929,7 @@ section#section4 .content-w p, section#section4 .content-w .inner-item {
 .color-palette {
     justify-content: center;
     margin-bottom: 20px;
+    margin-left: 30px;
 }
 section#section4 .cont-right {
     width: 100%;
@@ -951,7 +952,10 @@ section#section4 img {
     padding: 10px 10px 3px;
 }
 .dr-code {
-    margin-top: 50px;
+    margin-top: 120px;
+}
+.dr-code .item {
+    margin-top: 120px;
 }
 .reminders {
     gap: 10px;
@@ -1037,5 +1041,19 @@ section#section4 .reminders .inner-remind:last-child h3 {
 }
   #typewriter-text::after {
    font-size:20px;
+}
+section#section4 h3 {
+    font-size: 12vw !important;
+}
+section#section4 .inner-remind h3 {
+    font-size: 7vw !important;
+    display: block;
+    padding-top: 20px;
+}
+.inner-remind {
+    margin-top: 80px;
+}
+.dr-code strong {
+    border: 0;
 }
 }

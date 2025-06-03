@@ -103,9 +103,19 @@ function initScrollAnimations() {
     });
   });
 }
-// document.querySelector('.btn').addEventListener('click', () => {
-//   scroll.scrollTo('#section5'); // pass a selector string or an element
-// });
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.hash === '#rsvp') {
+      // Wait for any scroll library to be initialized
+      setTimeout(() => {
+        scroll.scrollTo('#section5'); // Scroll to the section
+      }, 100); // Adjust delay as needed for your environment
+    }
+
+    // Your existing click listener
+    document.querySelector('.btn').addEventListener('click', () => {
+      scroll.scrollTo('#section5');
+    });
+  });
 
 
 

@@ -7,22 +7,36 @@ const scroll = new LocomotiveScroll({
 
 document.addEventListener('DOMContentLoaded', function () {
   const wrapper = document.querySelector('.spotify-embed');
-  const iframe = wrapper.querySelector('iframe');
+  const iframe = wrapper?.querySelector('iframe');
 
-  // Initially hide the wrapper
-  wrapper.classList.add('hidden');
+  if (!iframe) return;
 
-  // Unhide when iframe fully loads
-  iframe.addEventListener('load', function () {
-    setTimeout(() => {
-      wrapper.classList.remove('hidden');
-    }, 150); // short delay ensures stability
+  // Prevent iframe from gaining focus
+  iframe.setAttribute('tabindex', '-1');
+  iframe.setAttribute('aria-hidden', 'true');
+
+  // Monitor focus events and immediately blur
+  iframe.addEventListener('focus', () => iframe.blur());
+  window.addEventListener('focusin', (e) => {
+    if (e.target === iframe) iframe.blur();
   });
 
-  // Safety fallback in case 'load' event fails
-  setTimeout(() => {
-    wrapper.classList.remove('hidden');
-  }, 4000);
+  // Also prevent window.scroll events triggered programmatically
+  const originalScrollTo = window.scrollTo;
+  window.scrollTo = function(x, y) {
+    // allow only if user scroll or small adjustment
+    if (Math.abs(y - window.scrollY) < 50) {
+      originalScrollTo.call(this, x, y);
+    }
+  };
+
+  // Optionally intercept anchor/hash scroll jumps
+  window.addEventListener('hashchange', () => {
+    const target = document.getElementById(location.hash.substring(1));
+    if (target) {
+      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    }
+  }, false);
 });
 
 function applyFixedMasonryGrid() {

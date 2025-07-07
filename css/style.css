@@ -785,6 +785,11 @@ section#section6 span {
     border-radius: 5px;
     box-shadow: 3px 3px 3px #00000042;
 }
+.spotify-embed.hidden {
+  visibility: hidden;
+  height: 0 !important;
+  overflow: hidden;
+}
 @media screen and (max-width:1680px) {
     .o-container {
         max-width: 100%;

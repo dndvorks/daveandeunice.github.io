@@ -5,39 +5,44 @@ const scroll = new LocomotiveScroll({
   class: 'is-inview',
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  const wrapper = document.querySelector('.spotify-embed');
-  const iframe = wrapper?.querySelector('iframe');
+document.addEventListener("DOMContentLoaded", function () {
+  const iframeWrapper = document.querySelector('.spotify-embed');
+  const iframe = iframeWrapper?.querySelector('iframe');
 
-  if (!iframe) return;
+  if (!iframeWrapper || !iframe) return;
+
+  let scrollLocked = false;
+  let lastKnownScroll = window.scrollY;
+
+  // Function to check if iframe is visible in viewport
+  function isIframeVisible() {
+    const rect = iframeWrapper.getBoundingClientRect();
+    return rect.top >= 0 && rect.bottom <= window.innerHeight;
+  }
+
+  // Scroll monitor
+  window.addEventListener('scroll', () => {
+    if (!isIframeVisible()) {
+      scrollLocked = true;
+    } else {
+      scrollLocked = false;
+    }
+    lastKnownScroll = window.scrollY;
+  });
+
+  // Continuously correct scroll if iframe tries to bring itself into view
+  setInterval(() => {
+    if (scrollLocked && Math.abs(window.scrollY - lastKnownScroll) > 100) {
+      window.scrollTo({ top: lastKnownScroll, behavior: 'instant' });
+    }
+  }, 200);
 
   // Prevent iframe from gaining focus
   iframe.setAttribute('tabindex', '-1');
   iframe.setAttribute('aria-hidden', 'true');
-
-  // Monitor focus events and immediately blur
   iframe.addEventListener('focus', () => iframe.blur());
-  window.addEventListener('focusin', (e) => {
-    if (e.target === iframe) iframe.blur();
-  });
-
-  // Also prevent window.scroll events triggered programmatically
-  const originalScrollTo = window.scrollTo;
-  window.scrollTo = function(x, y) {
-    // allow only if user scroll or small adjustment
-    if (Math.abs(y - window.scrollY) < 50) {
-      originalScrollTo.call(this, x, y);
-    }
-  };
-
-  // Optionally intercept anchor/hash scroll jumps
-  window.addEventListener('hashchange', () => {
-    const target = document.getElementById(location.hash.substring(1));
-    if (target) {
-      setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-    }
-  }, false);
 });
+
 
 function applyFixedMasonryGrid() {
   const items = document.querySelectorAll('.grid-item');

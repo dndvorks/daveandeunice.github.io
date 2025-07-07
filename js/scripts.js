@@ -5,6 +5,27 @@ const scroll = new LocomotiveScroll({
   class: 'is-inview',
 });
 
+(function() {
+  let lastUserScroll = window.scrollY;
+  let userActive = false;
+  let scrollTimeout;
+
+  window.addEventListener('scroll', () => {
+    userActive = true;
+    lastUserScroll = window.scrollY;
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => userActive = false, 200);
+  });
+
+  setInterval(() => {
+    const current = window.scrollY;
+    if (!userActive && Math.abs(current - lastUserScroll) > 150) {
+      window.scrollTo({ top: lastUserScroll, behavior: 'smooth' });
+    }
+  }, 200);
+})();
+
+
 function applyFixedMasonryGrid() {
   const items = document.querySelectorAll('.grid-item');
   const spans = [4, 1, 1, 1, 3, 1, 4]; // fixed spans for desktop

@@ -5,26 +5,16 @@ const scroll = new LocomotiveScroll({
   class: 'is-inview',
 });
 
-(function() {
-  let lastUserScroll = window.scrollY;
-  let userActive = false;
-  let scrollTimeout;
+document.addEventListener("DOMContentLoaded", function () {
+  const originalScrollTo = window.scrollTo;
 
-  window.addEventListener('scroll', () => {
-    userActive = true;
-    lastUserScroll = window.scrollY;
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => userActive = false, 200);
-  });
-
-  setInterval(() => {
-    const current = window.scrollY;
-    if (!userActive && Math.abs(current - lastUserScroll) > 150) {
-      window.scrollTo({ top: lastUserScroll, behavior: 'smooth' });
+  window.scrollTo = function (x, y) {
+    const dy = y - window.scrollY;
+    if (Math.abs(dy) < 50) {
+      originalScrollTo.call(this, x, y);
     }
-  }, 200);
-})();
-
+  };
+});
 
 function applyFixedMasonryGrid() {
   const items = document.querySelectorAll('.grid-item');

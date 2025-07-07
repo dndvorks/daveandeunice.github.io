@@ -5,15 +5,24 @@ const scroll = new LocomotiveScroll({
   class: 'is-inview',
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const originalScrollTo = window.scrollTo;
+document.addEventListener('DOMContentLoaded', function () {
+  const wrapper = document.querySelector('.spotify-embed');
+  const iframe = wrapper.querySelector('iframe');
 
-  window.scrollTo = function (x, y) {
-    const dy = y - window.scrollY;
-    if (Math.abs(dy) < 50) {
-      originalScrollTo.call(this, x, y);
-    }
-  };
+  // Initially hide the wrapper
+  wrapper.classList.add('hidden');
+
+  // Unhide when iframe fully loads
+  iframe.addEventListener('load', function () {
+    setTimeout(() => {
+      wrapper.classList.remove('hidden');
+    }, 150); // short delay ensures stability
+  });
+
+  // Safety fallback in case 'load' event fails
+  setTimeout(() => {
+    wrapper.classList.remove('hidden');
+  }, 4000);
 });
 
 function applyFixedMasonryGrid() {

@@ -58,6 +58,11 @@ function personalizeInvitation(sectionId, paramName = "to") {
     }
   }
 
+  // Call the function after DOM is ready
+  document.addEventListener("DOMContentLoaded", function () {
+    personalizeInvitation("section01");
+  });
+
 function applyFixedMasonryGrid() {
   const items = document.querySelectorAll('.grid-item');
   const spans = [4, 1, 1, 1, 3, 1, 4]; // fixed spans for desktop
@@ -353,7 +358,6 @@ $(document).ready(function () {
   updateCountdown();
 });
 $(document).ready(function () {
-  personalizeInvitation();
   // Set backgrounds
   $('.grid-item').each(function () {
     const bg = $(this).data('bg');

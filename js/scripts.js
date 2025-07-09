@@ -43,6 +43,20 @@ const scroll = new LocomotiveScroll({
   class: 'is-inview',
 });
 
+function personalizeInvitation(sectionId, paramName = "to") {
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get(paramName);
+
+    if (name) {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        const heading = section.querySelector("h3");
+        if (heading) {
+          heading.textContent = `${name}, you're invited!`;
+        }
+      }
+    }
+  }
 
 function applyFixedMasonryGrid() {
   const items = document.querySelectorAll('.grid-item');
@@ -339,6 +353,7 @@ $(document).ready(function () {
   updateCountdown();
 });
 $(document).ready(function () {
+  personalizeInvitation();
   // Set backgrounds
   $('.grid-item').each(function () {
     const bg = $(this).data('bg');
